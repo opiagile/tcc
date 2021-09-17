@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="Cidade" table="CIDADE">
+		<id name="id" column="IDCIDADE" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_cidade</param>
+			</generator>
+		</id>
+		<property name="nome" column="NOME" />
+		<many-to-one name="uf" column="IDUF"
+			class="br.com.bitwiselab.jano.model.Uf" not-null="true" lazy="false" />
+	</class>
+</hibernate-mapping>

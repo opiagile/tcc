@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="Equipamento" table="EQUIPAMENTO">
+		<id name="id" column="IDEQUIPAMENTO" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_equipamento</param>
+			</generator>
+		</id>
+		<property name="estado" column="IDESTADOEQUIPAMENTO" type="EstadoEquipamentoType" />
+		<component name="configuracao" class="br.com.henry.primmeAcesso.model.configuracao.Configuracao" >
+		    <component name="geral" class="br.com.henry.primmeAcesso.model.configuracao.Geral">
+				<property name="numeroEquipamento" column="NUMEROEQUIPAMENTO" />
+				<property name="numeroFabrica" column="NUMEROFABRICA" />
+				<property name="tipoDisplay" column="IDTIPODISPLAY" type="TipoDisplayType" />
+				<property name="volume" column="VOLUME" />
+				<property name="mensagemDisplay" column="MENSAGEMDISPLAY" />
+				<property name="beepTeclado" column="BEEPTECLADO" />
+				<property name="gerenciadorInteligente" column="GERENCIADORINTELIGENTE" />
+				<property name="senhaMenu" column="SENHAMENU" />
+				<property name="login" column="LOGIN" />
+				<property name="layoutTeclado" column="IDLAYOUTTECLADO" type="LayoutTecladoType"/>
+				<property name="idioma" column="IDIDIOMA" type="IdiomaType" />
+				<property name="leitorVericaDigital" column="LEITORVERICADIGITAL" />
+				<property name="modoCadastro" column="IDMODOCADASTRO" type="AutomaticoType"/>
+				<property name="tipoEquipamento" column="IDTIPOEQUIPAMENTO" type="TipoEquipamentoType" />
+				<property name="versaoProduto" column="VERSAOPRODUTO" />
+				<property name="versaoProtocolo" column="VERSAOPROTOCOLO" />
+				<property name="formatoRegistro" column="FORMATOREGISTRO" />
+			</component>
+			<component name="acesso" class="br.com.henry.primmeAcesso.model.configuracao.Acesso">
+				<property name="tipoValidacao" column="IDTIPOVALIDACAO" type="TipoValidacaoType"/>
+				<property name="tipoArmazenamento" column="IDTIPOARMAZENAMENTO" type="TipoArmazenamentoType"/>
+				<property name="validacaoOffline" column="VALIDACAOOFFLINE" />
+				<property name="timeout" column="TIMEOUT" />
+				<property name="tempoEsperaOffline" column="TEMPOESPERAOFFLINE" />
+				<property name="tempoPassback" column="TEMPOPASSBACK" />
+				<property name="direcaoPassback" column="DIRECAOPASSBACK" />
+				<property name="verificarValidade" column="VERIFICARVALIDADE" />
+				<property name="tipoAcesso" column="IDTIPOACESSO" type="TipoAcessoType"/>
+				<property name="ativarMaster" column="ATIVARMASTER" />
+				<property name="verificarHorario" column="VERIFICARHORARIO" />
+				<property name="gravacaoCiclica" column="GRAVACAOCICLICA" />
+				<property name="taxaRevista" column="TAXAREVISTA" />
+				<property name="biometriaOnline" column="BIOMETRIAONLINE" />
+				<property name="enviarMatricula" column="ENVIARMATRICULA" />
+			</component>
+			<component name="comunicacao" class="br.com.henry.primmeAcesso.model.configuracao.Comunicacao">
+			    <component name="tcp" class="br.com.henry.primmeAcesso.model.configuracao.ComunicacaoTCP">
+					<property name="ip" column="IP" />
+					<property name="mascara" column="MASCARA" />
+					<property name="dns" column="DNS" />
+					<property name="gateway" column="GATEWAY" />
+					<property name="macAddres" column="MACADDRES" />
+					<property name="porta" column="PORTA" />
+					<property name="versaoIP" column="VERSAOIP" />
+					<property name="dhcp" column="DHCP" />
+					<property name="nome" column="NOME" />
+				</component>
+				<property name="velocidadeSerial" column="VELOCIDADESERIAL" type="VelocidadeSerialType"/>
+				<property name="tipoComunicacao" column="IDTIPOCOMUNICACAO" type="TipoComunicacaoType"/>
+				<property name="conexaoSegura" column="CONEXAOSEGURA" />
+				<property name="ipComunicacaoSegura" column="IPCOMUNICACAOSEGURA" />
+				<property name="criptografar" column="CRIPTOGRAFAR" />
+				<property name="chaveCriptografia" column="CHAVECRIPTOGRAFIA" />
+			</component>
+			<component name="biometria" class="br.com.henry.primmeAcesso.model.configuracao.Biometria">
+				<property name="sensibilidadeDSP" column="SENSIBILIDADEDSP" />
+				<property name="segurancaDSP" column="SEGURANCADSP" />
+				<property name="qualidadeImagemDSP" column="QUALIDADEIMAGEMDSP" />
+				<property name="modoRapidoDSP" column="MODORAPIDODSP" />
+				<property name="qualidadeMinima" column="QUALIDADEMINIMA" />
+				<property name="autoOn" column="AUTOON" />
+				<property name="verificacao1n" column="VERIFICACAO1N" />
+				<property name="luminosidade" column="IDLUMINOSIDADE" type="LuminosidadeType" />
+				<property name="padraoTemplate" column="IDPADRAOTEMPLATE" type="PadraoTemplateType" />
+			</component>
+			<component name="perifericos" class="br.com.henry.primmeAcesso.model.configuracao.Perifericos">
+			    <component name="leitor1" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITORA1" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITORA1" type="DirecaoType"/>
+				</component>
+				<component name="leitor2" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITORA2" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITORA2" type="DirecaoType"/>
+				</component>
+				<component name="leitor3" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITORA3" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITORA3" type="DirecaoType"/>
+				</component>
+				<component name="leitor4" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITORA4" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITORA4" type="DirecaoType"/>
+				</component>
+				<component name="leitor5" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITORA5" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITORA5" type="DirecaoType"/>
+				</component>
+				<component name="teclado" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDLEITORATECLADO" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOTECLADO" type="DirecaoType" />
+				</component>
+				<component name="leitoraUsb" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITORAUSB" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITORAUSB" type="DirecaoType"/>
+				</component>
+				<component name="leitorExpansao1" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOEXPANSAO1" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOEXPANSAO1" type="DirecaoType"/>
+				</component>
+				<component name="leitorExpansao2" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOEXPANSAO2" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOEXPANSAO2" type="DirecaoType" />
+				</component>
+				<component name="leitorExpansaoBiometrico" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOEXPANSAOBIOMETRICO" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOEXPANSAOBIOMETRICO" type="DirecaoType"/>
+				</component>
+				<component name="leitor2D" class="br.com.henry.primmeAcesso.model.Leitor">
+				    <property name="tipo" column="IDTIPOLEITOR2D" type="TipoLeitoraType"/>
+					<property name="direcao" column="IDDIRECAOLEITOR2D" type="DirecaoType"/>
+				</component>
+				<property name="entradaDigital1" column="IDENTRADADIGITAL1" type="EntradaDigitalType" />
+				<property name="entradaDigital2" column="IDENTRADADIGITAL2" type="EntradaDigitalType" />
+				<component name="rele1" class="br.com.henry.primmeAcesso.model.Rele">
+				    <property name="configuracao" column="IDCONFIGURACAORELE1" type="ConfiguracaoReleType"/>
+					<property name="tempo" column="TEMPORELE1" />
+				</component>
+				<component name="rele2" class="br.com.henry.primmeAcesso.model.Rele">
+				    <property name="configuracao" column="IDCONFIGURACAORELE2" type="ConfiguracaoReleType"/>
+					<property name="tempo" column="TEMPORELE2" />
+				</component>
+				<component name="rele3" class="br.com.henry.primmeAcesso.model.Rele">
+				    <property name="configuracao" column="IDCONFIGURACAORELE3" type="ConfiguracaoReleType"/>
+					<property name="tempo" column="TEMPORELE3" />
+				</component>
+				<property name="tamper" column="IDTAMPER" type="TamperExternoType"/>
+			</component>
+		</component>
+		<set name="pessoas" table="PESSOAEQUIPAMENTO" lazy="false" >
+			<key column="IDEQUIPAMENTO" not-null="true"/>
+			<many-to-many class="br.com.bitwiselab.jano.model.Pessoa" column="IDPESSOA"/>
+		</set>
+	</class>
+</hibernate-mapping>

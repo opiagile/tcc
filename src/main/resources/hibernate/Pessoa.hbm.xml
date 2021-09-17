@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="Pessoa" table="PESSOA">
+		<id name="id" column="IDPESSOA" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_pessoa</param>
+			</generator>
+		</id>
+		<property name="identificador" column="IDENTIFICADOR" not-null="true" />
+		<property name="nome" column="NOME" not-null="true" />
+		<property name="nascimento" column="NASCIMENTO" />
+		<property name="foto" column="FOTO" />
+		<component name="documento" class="br.com.bitwiselab.jano.componentes.Documento" >
+		    <property name="numero" column="NUMERODOCUMENTO" not-null="true" />
+		    <property name="orgaoExpedidor" column="ORGAOEXPEDIDOR" not-null="true" />
+		    <property name="dataExpedicao" column="DATAEXPEDICAO" not-null="true" />
+		</component>
+		<component name="periodoPermanencia" class="br.com.bitwiselab.jano.componentes.Periodo" >
+		    <property name="inicio" column="PERIODOINICIAL" not-null="true" />
+		    <property name="fim" column="PERIODOFINAL" />
+		</component>
+		
+		<many-to-one name="contato" column="IDCONTATO" cascade="save-update"
+			class="br.com.bitwiselab.jano.model.Contato" lazy="false" />
+		<many-to-one name="endereco" column="IDENDERECO" cascade="save-update"
+			class="br.com.bitwiselab.jano.model.Endereco" lazy="false" />
+		<many-to-one name="empresa" column="IDEMPERSA" 
+			class="br.com.bitwiselab.jano.model.Empresa" lazy="false" not-null="false"/>
+		<set name="equipamentos" table="PESSOAEQUIPAMENTO" lazy="false" >
+			<key column="IDPESSOA" not-null="true"/>
+			<many-to-many class="br.com.bitwiselab.jano.model.Equipamento" column="IDEQUIPAMENTO"/>
+		</set>
+	</class>
+</hibernate-mapping>

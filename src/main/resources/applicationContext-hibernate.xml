@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="${jdbc.driver_class}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}"/>
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}"/>
+		<property name="numTestsPerEvictionRun" value="${jdbc.numTestsPerEvictionRun}"/>
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>
+					hibernate/UserTypes.hbm.xml
+				</value>
+				<!-- Manter em ordem alfabética daqui pra frente -->
+				<value>
+					hibernate/Acesso.hbm.xml
+				</value>
+				<value>
+					hibernate/Bairro.hbm.xml
+				</value>
+				<value>
+					hibernate/Cidade.hbm.xml
+				</value>
+				<value>
+					hibernate/Contato.hbm.xml
+				</value>
+				<value>
+					hibernate/Equipamento.hbm.xml
+				</value>
+				<value>
+					hibernate/Empresa.hbm.xml
+				</value>
+				<value>
+					hibernate/Endereco.hbm.xml
+				</value>
+				<value>
+					hibernate/LogLogin.hbm.xml
+				</value>
+				<value>
+					hibernate/Logradouro.hbm.xml
+				</value>
+				<value>
+					hibernate/Pessoa.hbm.xml
+				</value>
+				<value>
+					hibernate/Uf.hbm.xml
+				</value>			
+				<value>
+					hibernate/Usuario.hbm.xml
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">
+					${hibernate.format_sql}
+				</prop>
+				<prop key="hibernate.cache.provider_class">
+					net.sf.ehcache.hibernate.EhCacheProvider
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">
+					true
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					true
+				</prop>
+				<prop key="hibernate.jdbc.batch_size">
+					30
+				</prop>
+				<!-- Desabilitar em produÃ§Ã£o -->				
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean> 
+    <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="LogLogin" table="LOGLOGIN">
+		<id name="id" column="IDLOGLOGIN" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_loglogin</param>
+			</generator>
+		</id>
+		<property name="tipo" column="IDTIPOLOGLOGIN" type="TipoLogLoginType" not-null="true" access="field"/>
+		<many-to-one name="usuario" column="IDUSUARIO" not-null="true" 
+			class="br.com.bitwiselab.jano.model.Usuario" />
+		<property name="dataHora" column="DATAHORA" />		
+	</class>
+</hibernate-mapping>

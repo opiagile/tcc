@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="Empresa" table="EMPRESA">
+		<id name="id" column="IDEMPRESA" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_empresa</param>
+			</generator>
+		</id>
+		<property name="nome" column="NOME" not-null="true" />
+		<property name="cnpj" column="CNPJ" not-null="true" />
+		<many-to-one name="contato" column="IDCONTATO" cascade="save-update"
+			class="br.com.bitwiselab.jano.model.Contato" lazy="false" />
+		<many-to-one name="endereco" column="IDENDERECO" cascade="save-update"
+			class="br.com.bitwiselab.jano.model.Endereco" lazy="false" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="Uf" table="UF">
+		<id name="id" column="IDUF" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_uf</param>
+			</generator>
+		</id>
+		<property name="sigla" column="SIGLA" />
+		<property name="nome" column="NOME" />
+	</class>
+</hibernate-mapping>

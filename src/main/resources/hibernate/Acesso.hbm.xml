@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.com.bitwiselab.jano.model">
+	<class name="Acesso" table="ACESSO">
+		<id name="id" column="IDACESSO" access="field" unsaved-value="null" type="long">
+			<generator class="sequence">
+				<param name="sequence">s_acesso</param>
+			</generator>
+		</id>
+		<many-to-one name="pessoa" column="IDPESSOA" not-null="true" 
+			class="br.com.bitwiselab.jano.model.Pessoa" />
+		<many-to-one name="equipamento" column="IDEQUIPAMENTO" not-null="true" 
+			class="br.com.bitwiselab.jano.model.Equipamento" />
+		<property name="dataAcesso" column="DATAACESSO" not-null="true"/>
+		<property name="tipo" column="IDTIPOLIBERACAOACESSO" type="TipoLiberacaoAcessoType" not-null="true" access="field"/>
+	</class>
+</hibernate-mapping>

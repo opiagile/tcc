@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- Enumerados -->
+	<typedef name="PermissaoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.bitwiselab.jano.model.Permissao
+		</param>
+	</typedef>
+	<typedef name="TipoLogLoginType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.bitwiselab.jano.model.TipoLogLogin
+		</param>
+	</typedef>
+	<!-- ENUMS EQUIPAMENTO: br.com.henry.primmeAcesso.prototipo.model --> 
+	<typedef name="AutomaticoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.Automatico
+		</param>
+	</typedef>
+	<typedef name="DirecaoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.Direcao
+		</param>
+	</typedef>
+	<typedef name="EntradaDigitalType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.EntradaDigital
+		</param>
+	</typedef>
+	<typedef name="EstadoEquipamentoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.EstadoEquipamento
+		</param>
+	</typedef>
+	<typedef name="IdiomaType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.Idioma
+		</param>
+	</typedef>
+	<typedef name="LayoutTecladoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.LayoutTeclado
+		</param>
+	</typedef>
+	<typedef name="LuminosidadeType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.Luminosidade
+		</param>
+	</typedef>
+	<typedef name="Padrao2DType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.Padrao2D
+		</param>
+	</typedef>
+	<typedef name="PadraoTemplateType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.PadraoTemplate
+		</param>
+	</typedef>
+	<typedef name="ConfiguracaoReleType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.Rele$ConfiguracaoRele
+		</param>
+	</typedef>
+	<typedef name="TamperExternoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TamperExterno
+		</param>
+	</typedef>
+	<typedef name="TipoAcessoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoAcesso
+		</param>
+	</typedef>
+	<typedef name="TipoArmazenamentoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoArmazenamento
+		</param>
+	</typedef>
+	<typedef name="TipoComunicacaoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoComunicacao
+		</param>
+	</typedef>
+	<typedef name="TipoDisplayType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoDisplay
+		</param>
+	</typedef>
+	<typedef name="TipoEquipamentoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoEquipamento
+		</param>
+	</typedef>
+	<typedef name="TipoLeitoraType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoLeitora
+		</param>
+	</typedef>
+	<typedef name="TipoLiberacaoAcessoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.bitwiselab.jano.model.TipoLiberacaoAcesso
+		</param>
+	</typedef>
+	<typedef name="TipoLiberacaoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoLiberacao
+		</param>
+	</typedef>
+	<typedef name="TipoMensagemType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoMensagem
+		</param>
+	</typedef>
+	<typedef name="TipoValidacaoType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.TipoValidacao
+		</param>
+	</typedef>
+	<typedef name="VelocidadeSerialType" class="br.com.bitwiselab.jano.dao.hibernate.types.GenericEnumUserType">
+		<param name="enumClass">
+			br.com.henry.primmeAcesso.model.VelocidadeSerial
+		</param>
+	</typedef>
+</hibernate-mapping>
